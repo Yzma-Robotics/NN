@@ -23,7 +23,6 @@ A simple explanation of how they work and how to implement one from scratch in P
 
 Here’s something that may surprise you: neural networks aren’t that complicated! The term “neural network” gets used as a buzzword a lot, but in reality they’re often much simpler than people imagine. This project is intended for complete beginners and assumes ZERO prior knowledge of machine learning. We’ll understand how neural networks work while implementing one from scratch in Python.
 
-
 1. Building Blocks: Neurons
 First, we have to talk about neurons, the basic unit of a neural network. A neuron takes inputs, does some math with them, and produces one output. Here’s what a 2-input neuron looks like:
 
@@ -43,13 +42,11 @@ The activation function is used to turn an unbounded input into an output that h
 
 The sigmoid function only outputs numbers in the range (0, 1)(0,1). You can think of it as compressing (-\infty, +\infty)(−∞,+∞) to (0, 1)(0,1) - big negative numbers become ~0, and big positive numbers become ~1.
 
-
 ### Coding a Neuron
 Time to implement a neuron! We’ll use NumPy, a popular and powerful computing library for Python, to help us do math:
-
+```
 import numpy as np
 
-```
 def sigmoid(x):
   # Our activation function: f(x) = 1 / (1 + e^(-x))
   return 1 / (1 + np.exp(-x))
@@ -71,7 +68,6 @@ n = Neuron(weights, bias)
 x = np.array([2, 3])       # x1 = 2, x2 = 3
 print(n.feedforward(x))    # 0.9990889488055994
 ```
-
 2. Combining Neurons into a Neural Network
 A neural network is nothing more than a bunch of neurons connected together. Here’s what a simple neural network might look like:
 
@@ -91,7 +87,7 @@ Let’s implement feedforward for our neural network. Here’s the image of the 
 ```
 import numpy as np
 
-# ... code from previous section here
+# code from previous section here
 
 class OurNeuralNetwork:
   '''
@@ -126,7 +122,6 @@ x = np.array([2, 3])
 print(network.feedforward(x)) # 0.7216325609518421
 We got 0.72160.7216 again! Looks like it works.
 ```
-
 3. Training a Neural Network, Part 1
 Say we have the following measurements:
 
@@ -158,7 +153,6 @@ Let’s say our network always outputs 0 - in other words, it’s confident all 
  
 #### Code: MSE Loss
 Here’s some code to calculate loss for us:
-
 ```
 import numpy as np
 
@@ -171,7 +165,6 @@ y_pred = np.array([0, 0, 0, 0])
 
 print(mse_loss(y_true, y_pred)) # 0.5
 ```
-
 If you don't understand why this code works, read the NumPy quickstart on array operations.
 
 4. Training a Neural Network, Part 2
@@ -196,7 +189,6 @@ We have all the tools we need to train a neural network now! We’ll use an opti
 It’s finally time to implement a complete neural network:
 
 ![](images/11.png)
-
 ```
 import numpy as np
 
@@ -330,13 +322,11 @@ all_y_trues = np.array([
 network = OurNeuralNetwork()
 network.train(data, all_y_trues)
 ```
-
 Our loss steadily decreases as the network learns:
 
 ![](images/12.png)
 
 We can now use the network to predict genders:
-
 ```
 # Make some predictions
 emily = np.array([-7, -3]) # 128 pounds, 63 inches
@@ -344,7 +334,6 @@ frank = np.array([20, 2])  # 155 pounds, 68 inches
 print("Emily: %.3f" % network.feedforward(emily)) # 0.951 - F
 print("Frank: %.3f" % network.feedforward(frank)) # 0.039 - M
 ```
-
 ### Now What?
 You made it! A quick recap of what we did:
 
