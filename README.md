@@ -366,6 +366,3 @@ There’s still much more to do:
 * Discover other optimizers besides SGD.
 * Read my introduction to Convolutional Neural Networks (CNNs). CNNs revolutionized the field of Computer Vision and can be extremely powerful.
 * Read my introduction to Recurrent Neural Networks (RNNs), which are often used for Natural Language Processing (NLP).
-
-
-## Thanks for reading!
